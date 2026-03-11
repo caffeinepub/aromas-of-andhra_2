@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   AROMAS OF ANDHRA — Rich South Indian Palette
+   Primary: Deep Saffron/Turmeric Gold
+   Accent: Chili Red
+   Background: Warm cream/ivory
+   Text: Dark charcoal espresso
+   ============================================================ */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Core palette */
+    --background: 0.97 0.012 80;        /* warm ivory */
+    --foreground: 0.2 0.02 40;          /* deep espresso */
+
+    --card: 0.99 0.008 75;              /* off-white card */
+    --card-foreground: 0.2 0.02 40;
+
+    --popover: 0.99 0.008 75;
+    --popover-foreground: 0.2 0.02 40;
+
+    /* Saffron/Gold primary */
+    --primary: 0.68 0.19 68;            /* rich saffron gold */
+    --primary-foreground: 0.12 0.02 40; /* dark text on gold */
+
+    /* Chili red secondary */
+    --secondary: 0.55 0.22 27;          /* chili red */
+    --secondary-foreground: 0.98 0.01 80;
+
+    --muted: 0.94 0.02 75;
+    --muted-foreground: 0.5 0.03 60;
+
+    /* Teal accent */
+    --accent: 0.6 0.12 185;             /* teal */
+    --accent-foreground: 0.98 0.01 80;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.025 75;
+    --input: 0.88 0.025 75;
+    --ring: 0.68 0.19 68;
+
+    /* Chart colors */
+    --chart-1: 0.68 0.19 68;
+    --chart-2: 0.55 0.22 27;
+    --chart-3: 0.6 0.12 185;
+    --chart-4: 0.75 0.15 120;
+    --chart-5: 0.72 0.18 50;
+
+    /* Custom restaurant tokens */
+    --saffron: 0.75 0.19 72;            /* bright saffron */
+    --chili: 0.52 0.24 25;              /* deep chili red */
+    --turmeric: 0.78 0.18 85;           /* turmeric yellow */
+    --teal: 0.58 0.13 188;              /* teal */
+    --cream: 0.97 0.012 80;             /* warm cream */
+    --espresso: 0.18 0.03 40;           /* dark espresso */
+
+    --sidebar: 0.97 0.012 80;
+    --sidebar-foreground: 0.2 0.02 40;
+    --sidebar-primary: 0.68 0.19 68;
+    --sidebar-primary-foreground: 0.12 0.02 40;
+    --sidebar-accent: 0.94 0.02 75;
+    --sidebar-accent-foreground: 0.2 0.02 40;
+    --sidebar-border: 0.88 0.025 75;
+    --sidebar-ring: 0.68 0.19 68;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", serif;
+  }
+
+  .font-heading {
+    font-family: "Playfair Display", serif;
+  }
+
+  .font-sans {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .font-cabinet {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+
+  /* Saffron gradient */
+  .gradient-saffron {
+    background: linear-gradient(135deg, oklch(var(--saffron)), oklch(var(--turmeric)));
+  }
+
+  /* Hero text gradient */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, oklch(var(--turmeric)), oklch(var(--saffron)), oklch(0.85 0.12 55));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Decorative border */
+  .border-ornamental {
+    border-image: linear-gradient(90deg, transparent, oklch(var(--saffron)), transparent) 1;
+  }
+
+  /* Menu tab scrollable */
+  .menu-tabs-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .menu-tabs-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Gallery hover */
+  .gallery-item {
+    overflow: hidden;
+  }
+  .gallery-item img {
+    transition: transform 0.4s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.08);
+  }
+  .gallery-caption {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .gallery-item:hover .gallery-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Section title underline decoration */
+  .section-title-decor::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, oklch(var(--saffron)), oklch(var(--chili)));
+    border-radius: 2px;
+    margin: 12px auto 0;
+  }
+
+  /* Kolam pattern texture for section bg */
+  .bg-pattern-warm {
+    background-color: oklch(0.97 0.012 80);
+    background-image: radial-gradient(circle at 1px 1px, oklch(0.88 0.025 75) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  /* Spice card hover */
+  .menu-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .menu-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px oklch(var(--chili) / 0.12);
+  }
+}
